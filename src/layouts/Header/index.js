@@ -2,7 +2,13 @@ import React, { Component } from "react";
 
 class Header extends Component {
   render() {
-    return <div className="border border-success my-2">Header</div>;
+    return (
+      <div className="p-2">
+        <h2 className="fw-bold  text-center text-danger ">
+          BÀI TẬP BẦU CUA CYBERSOFT
+        </h2>
+      </div>
+    );
   }
 }
 

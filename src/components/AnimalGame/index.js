@@ -1,8 +1,12 @@
 import React, { Component } from "react";
-
+import Bau from "../../img/bau.png";
 class AnimalGame extends Component {
   render() {
-    return <div>AnimalGame</div>;
+    return (
+      <div className="card">
+        <img src={Bau} class="card-img-top" alt="..." />
+      </div>
+    );
   }
 }
 

@@ -4,7 +4,7 @@ import BetButton from "../BetButton";
 class CardGame extends Component {
   render() {
     return (
-      <div className="border border-success m-2">
+      <div className="m-2 bg-warning ">
         <AnimalGame />
         <BetButton />
       </div>

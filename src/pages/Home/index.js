@@ -4,7 +4,7 @@ import CrabGame from "../../layouts/CrabGame";
 class Home extends Component {
   render() {
     return (
-      <div className="container">
+      <div className="container fw-bold">
         <Header />
         <CrabGame />
       </div>
