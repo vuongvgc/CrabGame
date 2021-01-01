@@ -1,15 +1,23 @@
 import React, { Component } from "react";
 import AnimalGame from "../AnimalGame";
 import BetButton from "../BetButton";
+import { connect } from "react-redux";
 class CardGame extends Component {
   render() {
+    console.log(this.props.animalItem)
+    const { name, url, point } = this.props.animalItem
     return (
       <div className="m-2 bg-warning ">
-        <AnimalGame />
-        <BetButton />
+        <AnimalGame img={url} />
+        <BetButton point={point} />
       </div>
     );
   }
 }
-
-export default CardGame;
+const mapStateToProps = (state, ownProps) => {
+  // console.log(ownProps);
+  return {
+    animalItem: state.GrabGameReducer.arrAnimal[ownProps.index],
+  };
+};
+export default connect(mapStateToProps)(CardGame);

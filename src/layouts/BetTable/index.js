@@ -1,30 +1,23 @@
 import React, { Component } from "react";
 import CardGame from "../../components/CardGame";
+import { connect } from "react-redux";
 class BetTable extends Component {
   render() {
+    console.log(this.props.arrAnimal);
     return (
       <div className="row">
-        <div className="col-4">
-          <CardGame />
-        </div>
-        <div className="col-4">
-          <CardGame />
-        </div>
-        <div className="col-4">
-          <CardGame />
-        </div>
-        <div className="col-4">
-          <CardGame />
-        </div>
-        <div className="col-4">
-          <CardGame />
-        </div>
-        <div className="col-4">
-          <CardGame />
-        </div>
+        {this.props.arrAnimal.map((animal, index) => {
+          return (
+            <div className="col-4" key={animal.id}>
+              <CardGame index={index} />
+            </div>
+          );
+        })}
       </div>
     );
   }
 }
-
-export default BetTable;
+const mapStateToProps = (state) => {
+  return { arrAnimal: state.GrabGameReducer.arrAnimal };
+};
+export default connect(mapStateToProps)(BetTable);

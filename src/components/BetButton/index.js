@@ -7,7 +7,7 @@ class BetButton extends Component {
         <p>
           Cược:
           <button className="btn btn-success text-center">+</button>
-          <span className="mx-2 text-success">0</span>
+          <span className="mx-2 text-success">{this.props.point}</span>
           <button className="btn btn-success">-</button>
         </p>
       </div>
