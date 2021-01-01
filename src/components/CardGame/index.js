@@ -4,8 +4,8 @@ import BetButton from "../BetButton";
 import { connect } from "react-redux";
 class CardGame extends Component {
   render() {
-    console.log(this.props.animalItem)
-    const { name, url, point } = this.props.animalItem
+    // console.log(this.props.animalItem);
+    const { url, point } = this.props.animalItem;
     return (
       <div className="m-2 bg-warning ">
         <AnimalGame img={url} />

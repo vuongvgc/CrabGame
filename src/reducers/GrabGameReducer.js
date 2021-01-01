@@ -1,3 +1,4 @@
+import { randomNumber } from "../utils/randomNumber";
 const initialState = {
   arrAnimal: [
     {
@@ -38,28 +39,17 @@ const initialState = {
       point: 0,
     },
   ],
-  result: [{
-      id: 1,
-      name: "bau",
-      url: "./img/bau.png",
-      point: 0,
-    },
-
-    {
-      id: 2,
-      name: "ca",
-      url: "./img/ca.png",
-      point: 0,
-    },
-    {
-      id: 3,
-      name: "cua",
-      url: "./img/cua.png",
-      point: 0,
-    },]
+  result: [1, 2, 3],
 };
 const GrabGameReducer = (state = initialState, action) => {
-  switch (action.payload) {
+  switch (action.type) {
+    case "DICE__GAME": {
+      console.log("dice");
+      return {
+        ...state,
+        result: [randomNumber(), randomNumber(), randomNumber()],
+      };
+    }
     default:
       return state;
   }
