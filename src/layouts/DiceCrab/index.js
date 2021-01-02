@@ -7,14 +7,13 @@ class DiceCrab extends Component {
   render() {
     // console.log(this.props.result);
     const { result, animalItem } = this.props;
-    console.log(findAnimal());
     return (
       <div className="text-center">
-        {result.map((dice) => {
-          console.log(dice);
+        {result.map((dice, index) => {
+          let id = findAnimal(animalItem, dice);
           return (
-            <div className="col-3 mx-auto my-2">
-              <AnimalGame img={animalItem[dice].url} />
+            <div className="col-3 mx-auto my-2" key={index}>
+              <AnimalGame img={animalItem[id].url} />
             </div>
           );
         })}

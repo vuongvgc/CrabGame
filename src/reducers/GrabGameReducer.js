@@ -44,7 +44,7 @@ const initialState = {
 const GrabGameReducer = (state = initialState, action) => {
   switch (action.type) {
     case "DICE__GAME": {
-      console.log("dice");
+      // console.log("dice");
       return {
         ...state,
         result: [randomNumber(), randomNumber(), randomNumber()],

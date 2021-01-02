@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class BetButton extends Component {
   render() {
     return (
-      <div class="py-1">
+      <div className="py-1">
         <p>
           Cược:
           <button className="btn btn-success text-center">+</button>
