@@ -5,11 +5,11 @@ import { connect } from "react-redux";
 class CardGame extends Component {
   render() {
     // console.log(this.props.animalItem);
-    const { url, point } = this.props.animalItem;
+    const { url, point, id } = this.props.animalItem;
     return (
       <div className="m-2 bg-warning ">
         <AnimalGame img={url} />
-        <BetButton point={point} />
+        <BetButton point={point} id={id} />
       </div>
     );
   }

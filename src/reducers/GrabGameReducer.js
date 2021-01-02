@@ -1,4 +1,5 @@
 import { randomNumber } from "../utils/randomNumber";
+import { findAnimal } from "../utils/findAnimal";
 const initialState = {
   arrAnimal: [
     {
@@ -49,6 +50,37 @@ const GrabGameReducer = (state = initialState, action) => {
         ...state,
         result: [randomNumber(), randomNumber(), randomNumber()],
       };
+    }
+    case "ADD__POINT": {
+      // console.log("Add");
+      let newArr = [...state.arrAnimal];
+      newArr[findAnimal(state.arrAnimal, action.payload)] = {
+        ...newArr[findAnimal(state.arrAnimal, action.payload)],
+        point: newArr[findAnimal(state.arrAnimal, action.payload)].point + 100,
+      };
+      return {
+        ...state,
+        arrAnimal: newArr,
+      };
+    }
+    case "SUB__POINT": {
+      // console.log("Add");
+      if (
+        state.arrAnimal[findAnimal(state.arrAnimal, action.payload)].point > 0
+      ) {
+        let newArr = [...state.arrAnimal];
+        newArr[findAnimal(state.arrAnimal, action.payload)] = {
+          ...newArr[findAnimal(state.arrAnimal, action.payload)],
+          point:
+            newArr[findAnimal(state.arrAnimal, action.payload)].point - 100,
+        };
+        return {
+          ...state,
+          arrAnimal: newArr,
+        };
+      }
+
+      return state;
     }
     default:
       return state;
