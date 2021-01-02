@@ -41,14 +41,23 @@ const initialState = {
     },
   ],
   result: [1, 2, 3],
+  rewardPoint: 500,
 };
 const GrabGameReducer = (state = initialState, action) => {
   switch (action.type) {
     case "DICE__GAME": {
       // console.log("dice");
+      let arrResult = [randomNumber(), randomNumber(), randomNumber()];
+      let newPoint = state.rewardPoint;
+      arrResult.map((rs) => {
+        return (newPoint += state.arrAnimal[rs - 1].point * 2);
+      });
+      console.log(newPoint);
       return {
         ...state,
-        result: [randomNumber(), randomNumber(), randomNumber()],
+        arrAnimal: [...initialState.arrAnimal],
+        result: arrResult,
+        rewardPoint: newPoint,
       };
     }
     case "ADD__POINT": {
@@ -61,6 +70,7 @@ const GrabGameReducer = (state = initialState, action) => {
       return {
         ...state,
         arrAnimal: newArr,
+        rewardPoint: state.rewardPoint - 100,
       };
     }
     case "SUB__POINT": {
@@ -77,6 +87,7 @@ const GrabGameReducer = (state = initialState, action) => {
         return {
           ...state,
           arrAnimal: newArr,
+          rewardPoint: state.rewardPoint + 100,
         };
       }
 
