@@ -62,16 +62,21 @@ const GrabGameReducer = (state = initialState, action) => {
     }
     case "ADD__POINT": {
       // console.log("Add");
-      let newArr = [...state.arrAnimal];
-      newArr[findAnimal(state.arrAnimal, action.payload)] = {
-        ...newArr[findAnimal(state.arrAnimal, action.payload)],
-        point: newArr[findAnimal(state.arrAnimal, action.payload)].point + 100,
-      };
-      return {
-        ...state,
-        arrAnimal: newArr,
-        rewardPoint: state.rewardPoint - 100,
-      };
+      if (state.rewardPoint > 0) {
+        let newArr = [...state.arrAnimal];
+        newArr[findAnimal(state.arrAnimal, action.payload)] = {
+          ...newArr[findAnimal(state.arrAnimal, action.payload)],
+          point:
+            newArr[findAnimal(state.arrAnimal, action.payload)].point + 100,
+        };
+        return {
+          ...state,
+          arrAnimal: newArr,
+          rewardPoint: state.rewardPoint - 100,
+        };
+      }
+
+      return state;
     }
     case "SUB__POINT": {
       // console.log("Add");
