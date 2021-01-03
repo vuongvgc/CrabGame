@@ -1,5 +1,6 @@
 import { randomNumber } from "../utils/randomNumber";
 import { findAnimal } from "../utils/findAnimal";
+import { countOccurrences } from "../utils/countOccurrences";
 const initialState = {
   arrAnimal: [
     {
@@ -48,11 +49,15 @@ const GrabGameReducer = (state = initialState, action) => {
     case "DICE__GAME": {
       // console.log("dice");
       let arrResult = [randomNumber(), randomNumber(), randomNumber()];
+      // console.log(countOccurrences(arrResult));
+      let countNumber = countOccurrences(arrResult);
+      let arrNumber = Object.keys(countNumber);
       let newPoint = state.rewardPoint;
-      arrResult.map((rs) => {
-        return (newPoint += state.arrAnimal[rs - 1].point * 2);
+      arrNumber.map((rs) => {
+        return (newPoint +=
+          state.arrAnimal[rs - 1].point * (countNumber[rs] + 1));
       });
-      console.log(newPoint);
+      // console.log(newPoint);
       return {
         ...state,
         arrAnimal: [...initialState.arrAnimal],
